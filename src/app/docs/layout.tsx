@@ -18,7 +18,25 @@ export default function Layout({ children }: LayoutProps<"/docs">) {
       tree={source.getPageTree()}
       {...base}
       nav={{ ...base.nav, mode: "top" }}
-      sidebar={{ collapsible: false }}
+      sidebar={{
+        collapsible: false,
+        footer: (
+          <a
+            href="https://nervestudios.net"
+            className="flex flex-col gap-2 px-2 pt-3 text-fd-muted-foreground text-xs leading-relaxed transition-colors hover:text-fd-foreground"
+          >
+            {/* biome-ignore lint/performance/noImgElement: a small static logo; next/image adds nothing here */}
+            <img
+              src="/images/brand/nerve-studios.png"
+              alt="Nerve Studios"
+              width={480}
+              height={191}
+              className="h-8 w-auto self-start"
+            />
+            <span>Braven Bot is owned and operated by Nerve Studios.</span>
+          </a>
+        ),
+      }}
     >
       {children}
     </DocsLayout>
