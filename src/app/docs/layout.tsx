@@ -23,6 +23,8 @@ export default function Layout({ children }: LayoutProps<"/docs">) {
         footer: (
           <a
             href="https://nervestudios.net"
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex flex-col gap-2 px-2 pt-3 text-fd-muted-foreground text-xs leading-relaxed transition-colors hover:text-fd-foreground"
           >
             {/* biome-ignore lint/performance/noImgElement: a small static logo; next/image adds nothing here */}
