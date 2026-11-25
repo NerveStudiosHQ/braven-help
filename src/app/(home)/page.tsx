@@ -123,25 +123,16 @@ export default function HomePage() {
   return (
     <main className="flex flex-1 flex-col">
       {/* ------------------------------------------------------------ hero */}
-      <section className="relative overflow-hidden border-fd-border border-b">
-        {/* A single soft wash, so the page has depth without a hero image to
-            load and no motion to distract from a search box. */}
-        <div
-          aria-hidden
-          className="pointer-events-none absolute inset-0 opacity-60"
-          style={{
-            background:
-              "radial-gradient(60rem 30rem at 50% -20%, color-mix(in srgb, var(--color-fd-primary) 16%, transparent), transparent 70%)",
-          }}
-        />
-
-        <div className="relative mx-auto w-full max-w-5xl px-6 py-20 text-center sm:py-28">
-          <p className="mb-4 inline-flex items-center gap-2 rounded-full border border-fd-border bg-fd-card px-3 py-1 text-fd-muted-foreground text-xs">
+      {/* Flat page background, no wash: the main site's hero dropped its
+          background effect too. */}
+      <section className="border-fd-border border-b">
+        <div className="mx-auto w-full max-w-5xl px-6 py-20 text-center sm:py-28">
+          <p className="mb-4 inline-flex items-center gap-2 rounded-full bg-fd-primary/15 px-3 py-1 font-semibold text-[#2b93ff] text-xs uppercase tracking-[0.08em]">
             <BookOpen className="h-3.5 w-3.5" />
             Documentation
           </p>
 
-          <h1 className="text-balance font-semibold text-4xl leading-tight tracking-tight sm:text-5xl">
+          <h1 className="text-balance font-bold text-4xl leading-tight sm:text-5xl">
             Everything Braven does, and how to use it
           </h1>
 
@@ -154,14 +145,14 @@ export default function HomePage() {
           <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
             <Link
               href="/docs/getting-started/quick-start"
-              className="inline-flex items-center gap-2 rounded-lg bg-fd-primary px-5 py-2.5 font-medium text-fd-primary-foreground text-sm transition-opacity hover:opacity-90"
+              className="inline-flex items-center gap-2 rounded-lg bg-fd-primary px-5 py-2.5 font-semibold text-fd-primary-foreground text-sm transition-[background-color,box-shadow] hover:bg-[#2b93ff] hover:shadow-[0_0.5rem_1.5rem_-0.25rem_#007efe8c]"
             >
               Get started
               <ArrowRight className="h-4 w-4" />
             </Link>
             <Link
               href="/docs"
-              className="inline-flex items-center gap-2 rounded-lg border border-fd-border bg-fd-card px-5 py-2.5 font-medium text-sm transition-colors hover:bg-fd-muted"
+              className="inline-flex items-center gap-2 rounded-lg border border-fd-border bg-white/5 px-5 py-2.5 font-semibold text-sm transition-colors hover:bg-white/10"
             >
               Browse the docs
             </Link>

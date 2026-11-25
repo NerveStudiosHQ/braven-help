@@ -20,35 +20,60 @@
  */
 :root,
 .dark {
-  --color-fd-background: #07090e;
-  --color-fd-foreground: #e8ecf1;
+  /* --bg, the banner navy. */
+  --color-fd-background: #01081b;
+  /* --ink */
+  --color-fd-foreground: #f2f5fa;
 
-  /* Cards, the sidebar, the search dialog. */
-  --color-fd-card: #0d1017;
-  --color-fd-card-foreground: #e8ecf1;
-  --color-fd-popover: #0d1017;
-  --color-fd-popover-foreground: #e8ecf1;
+  /* Cards and the sidebar: --fill-1 (4% white) composited over --bg. */
+  --color-fd-card: #0b1224;
+  --color-fd-card-foreground: #f2f5fa;
+  /* The search dialog and menus: --float. */
+  --color-fd-popover: #111b2b;
+  --color-fd-popover-foreground: #f2f5fa;
 
-  /* Hovered nav items and inline code. */
-  --color-fd-muted: #12161f;
-  --color-fd-muted-foreground: #97a1b2;
-  --color-fd-accent: #12161f;
-  --color-fd-accent-foreground: #e8ecf1;
+  /* Hovered nav items and inline code: --fill-2 (7%) over --bg. */
+  --color-fd-muted: #13192b;
+  /* --ink-2 (60% white) over --bg. */
+  --color-fd-muted-foreground: #999ca4;
+  --color-fd-accent: #13192b;
+  --color-fd-accent-foreground: #f2f5fa;
 
-  --color-fd-border: #1e2532;
-  --color-fd-ring: #4c8dff;
+  /* --edge (9%) over --bg: card outlines and the header's bottom rule. */
+  --color-fd-border: #181e30;
+  --color-fd-ring: #2b93ff;
 
-  /* The one accent. Links, the active sidebar item, focus rings. */
-  --color-fd-primary: #4c8dff;
-  --color-fd-primary-foreground: #04070d;
+  /* --accent, the mark blue. Primary buttons are this with white text. */
+  --color-fd-primary: #007efe;
+  --color-fd-primary-foreground: #ffffff;
 
-  --color-fd-secondary: #12161f;
-  --color-fd-secondary-foreground: #e8ecf1;
+  --color-fd-secondary: #13192b;
+  --color-fd-secondary-foreground: #f2f5fa;
 }
 
 html {
   scrollbar-gutter: stable;
   color-scheme: dark;
+}
+
+::selection {
+  background: #007efe38;
+}
+
+/* Inter wants tighter tracking at display sizes; the main site does the same. */
+h1,
+h2,
+h3 {
+  letter-spacing: -0.02em;
+}
+
+/* The header: a full-width bar with a hairline rule and a blurred navy
+   ground, as on bravenbot.com. */
+#nd-nav,
+#nd-subnav {
+  border-bottom: 1px solid var(--color-fd-border);
+  background: color-mix(in srgb, var(--color-fd-background) 80%, transparent);
+  backdrop-filter: blur(12px);
 }
 
 /* react-remove-scroll writes these as inline styles when a dialog opens, and an

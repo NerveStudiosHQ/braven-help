@@ -12,10 +12,16 @@ export function baseOptions(): BaseLayoutProps {
   return {
     nav: {
       title: (
-        <span className="inline-flex items-center gap-2 font-semibold">
-          <span
-            aria-hidden
-            className="inline-block h-5 w-5 rounded-md bg-fd-primary"
+        // The same lockup as the main site's header: the transparent mark
+        // beside the word set in Inter.
+        <span className="inline-flex items-center gap-2.5 font-bold text-lg leading-none tracking-tight">
+          {/* biome-ignore lint/performance/noImgElement: a 32px static mark; next/image adds nothing here */}
+          <img
+            src="/images/brand/braven-mark.png"
+            alt=""
+            width={32}
+            height={32}
+            className="h-8 w-8 shrink-0 object-contain"
           />
           {appName}
         </span>
