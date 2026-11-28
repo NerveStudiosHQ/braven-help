@@ -13,7 +13,7 @@ FROM node:22-alpine AS build
 RUN corepack enable
 WORKDIR /app
 
-COPY package.json pnpm-lock.yaml pnpm-workspace.yaml ./
+COPY package.json pnpm-lock.yaml ./
 RUN pnpm install --frozen-lockfile
 
 # postcss.config.mjs is not optional. Tailwind v4 is a PostCSS plugin and
@@ -23,6 +23,7 @@ RUN pnpm install --frozen-lockfile
 COPY tsconfig.json next.config.mjs postcss.config.mjs biome.json ./
 COPY src src
 COPY content content
+COPY public public
 
 # NEXT_PUBLIC_* is inlined into the client bundle at build time, not read at
 # boot, so these have to be present *here*. Passing them as runtime environment
@@ -47,6 +48,8 @@ ENV HOSTNAME=0.0.0.0
 
 COPY --from=build /app/.next/standalone ./
 COPY --from=build /app/.next/static ./.next/static
+# The standalone output leaves public/ behind; the logo lives there.
+COPY --from=build /app/public ./public
 
 EXPOSE 3002
 USER node
